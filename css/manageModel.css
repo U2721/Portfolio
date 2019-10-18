@@ -1,0 +1,662 @@
+
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+	height: auto;
+	/*background-image: url(img/bg.jpg);*/
+
+	font-family: Montserrat,Myriad;
+	/*	background-size: cover;*/
+	background-color: rgb(221, 255, 238,0.5);
+
+
+	color: #708090;
+	padding-top:0; 
+
+	
+}
+
+#title{
+
+	position: fixed;
+	width: 100%;
+	height: 60px;
+	background: white;
+	color: #708090;
+	z-index: 10;
+	box-shadow:0px 15px 10px -15px #ccc;
+}
+
+
+#logo{
+	position: absolute;
+	width: 200px;
+	left: 10px;
+	vertical-align: center;
+	top: 20px;
+}
+
+#titlePic
+{	float: left;
+	margin-left: 20px;
+	width: 30px;
+	height: 30px;
+	
+}
+#titleText
+{
+	float: right;
+	margin-top: 3px;
+	font-weight: 600;
+	color: #708090;
+}
+
+#chooseUse
+{
+	position: absolute;
+	width: 25%;
+	top:23px;
+	left: 500px;
+	font-size: 15px;
+	color: #333333;
+	display:inline-block;
+
+}
+
+#chooseUse a
+{
+	text-decoration:none;
+	color: #333333;
+}
+
+#chooseUse a:link
+{
+	color: #333333;
+}
+
+#chooseUse a:hover 
+{
+	color: rgb(51, 136, 238);
+}
+
+#ManageEva
+{
+	position: absolute;
+	width: 25%;
+	left: 0px;
+	border-right: 1px solid lightgrey;
+
+}
+
+#ManageModel
+{
+	position: absolute;
+	width: 25%;
+	left: 30%;
+	border-right: 1px solid lightgrey;
+}
+
+#IndexAndMethod
+{
+	position: absolute;
+	width: 40%;
+	right: 0px;
+}
+
+#buttons
+{
+	position: absolute;
+	width: 15%;
+	top:24px;
+	right:20px;
+	font-size: 13px;
+	display: inline-block;
+}
+#buttons a
+{
+
+	text-decoration:none;
+	color: #333333;
+
+}
+
+#buttons :hover
+{
+	color: lightblue;
+}
+
+
+#message
+{
+	position: absolute;
+	width: 25%;
+	left: 0px;
+}
+
+#set
+{
+	position: absolute;
+	width: 25%;
+	left: 25%;
+}
+
+#mine
+{
+	position: absolute;
+	width: 50%;
+	right: 0px;
+}
+
+
+#navi
+{
+	position: absolute;
+	top:100px;
+	left: 5%;
+	right: 5%;
+	width: 90%;
+	height: 40px;
+	background-color: white;
+	display: inline-block;
+	padding-top: 20px;
+	box-shadow:5px 5px 5px -5px #ccc;
+
+}
+
+#chooseCondition
+{
+	position: absolute;
+	width: 40%;
+	left: 10px;
+}
+
+#chooseCondition input
+{
+	width: 70px;
+	text-align: center;
+	border:none;
+	border:solid;
+	border-radius: 5px;
+	border-width: 1px;
+	/*border-color: rgb(85, 204, 238);*/
+	border-color: lightgrey;
+	padding: 2px;
+
+}
+
+
+#chooseCondition input:hover
+{
+	border-color: rgb(51, 136, 238);
+	color: rgb(51, 136, 238);
+}
+
+#back 
+{
+	position: absolute;
+	width: 10%;
+	left: 60%;
+	
+}
+
+#back input
+{
+	text-align: center;
+	border:none;
+	border:solid;
+	border-radius: 5px;
+	border-color: rgb(68, 170, 238);
+	border-width: 2px;
+	color: rgb(51, 136, 238);
+	height: 20px;
+}
+
+#back input:hover
+{
+	border-color: rgb(51, 136, 238);
+}
+
+
+
+
+#AllEvaluation
+{
+	position: absolute;
+	width: 90%;
+	top: 200px;
+	height:90%;
+	left: 5%;
+	right: 5%;
+
+
+}
+
+
+.ChoosedTitle
+{
+	height: 30px;
+}
+
+#AllModelEvaluation
+{
+	position: absolute;
+	
+	/*background-color: white;*/
+	width: 100%;
+	height: 600px;
+	
+	top:0px;
+	
+}
+.more:hover
+{
+	visibility: visible;
+	
+
+}
+.more
+{
+	position: relative;
+	left: 10%;
+	top:22%;
+	width: 200px;
+	height: 100px;
+
+	text-align: center;
+	font-size: 12px;
+}
+
+.more ul
+{
+	width: 200px;
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+.more li
+{
+	border:1px solid lightgrey;
+	padding: 3px;
+	width: 50px;
+}
+.more li:hover
+{
+	background-color: #0099FF;
+	color: white;
+
+}
+
+.thisModels
+{
+	overflow: auto;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.AllModelEva
+{
+
+	margin-top: 50px;
+	position: relative;
+	top:50px;
+	height: 300px;
+	background-color: white;
+	width: 22%;
+}
+
+
+
+.AllModelevaPic
+{
+	height: 150px;
+	background-color: lightblue;
+}
+
+.AllModelEvaText
+{
+	padding-left: 5%;
+	padding-right: 5%;
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.AllModelEvaName
+{
+	font-weight:bold;
+	font-size: 17px;
+	line-height: 30px;
+}
+
+
+#ListEvaluation
+{
+	position: absolute;
+	
+	/*background-color: white;*/
+	width: 100%;
+	height: 600px;
+	
+	top:0px;
+}
+
+
+.ListEva
+{
+
+	margin-top: 50px;
+	position: relative;
+	top:50px;
+	height: 300px;
+	background-color: white;
+	width: 22%;
+}
+
+
+
+.ListevaPic
+{
+	height: 150px;
+	background-color: lightblue;
+}
+
+.ListEvaText
+{
+	padding-left: 5%;
+	padding-right: 5%;
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.ListEvaName
+{
+	font-weight:bold;
+	font-size: 17px;
+	line-height: 30px;
+}
+
+
+#HistoryEvaluation
+{
+	position: absolute;
+	
+	/*background-color: white;*/
+	width: 100%;
+	height: 600px;
+	
+	top:0px;
+}
+
+
+.HistoryEva
+{
+
+	margin-top: 50px;
+	position: relative;
+	top:50px;
+	height: 300px;
+	background-color: white;
+	width: 22%;
+}
+
+
+
+.HistoryevaPic
+{
+	height: 150px;
+	background-color: lightblue;
+}
+
+.HistoryEvaText
+{
+	padding-left: 5%;
+	padding-right: 5%;
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.HistoryEvaName
+{
+	font-weight:bold;
+	font-size: 17px;
+	line-height: 30px;
+}
+
+
+#CollEvaluation
+{
+	position: absolute;
+	
+	/*background-color: white;*/
+	width: 100%;
+	height: 600px;
+	
+	top:0px;
+}
+
+
+.CollEva
+{
+
+	margin-top: 50px;
+	position: relative;
+	top:50px;
+	height: 300px;
+	background-color: white;
+	width: 22%;
+}
+
+
+
+.CollevaPic
+{
+	height: 150px;
+	background-color: lightblue;
+}
+
+.CollEvaText
+{
+	padding-left: 5%;
+	padding-right: 5%;
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.CollEvaName
+{
+	font-weight:bold;
+	font-size: 17px;
+	line-height: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+.HistoryTitle
+{
+	position: absolute;
+	top:100%;
+}
+
+
+#HistoryEvaluation
+{
+	
+	position: absolute;
+	
+	
+	background-color: white;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+
+.HistoryEva
+{
+
+	position: relative;
+	top:50px;
+	height: 330px;
+	background-color: white;
+	width: 20%;
+}
+
+
+.HistoryevaPic
+{
+
+	height: 150px;
+	background-color: lightblue;
+}
+
+.HistoryEvaText
+{
+	padding-left: 5%;
+	padding-right: 5%;
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.HistoryEvaName
+{
+	font-weight:bold;
+	font-size: 17px;
+	line-height: 30px;
+}
+
+.CollTitle
+{
+	position: absolute;
+	top:150%;
+}
+
+
+#CollEvaluation
+{
+	position: absolute;
+	top:160%;
+	height: auto;
+	background-color: white;
+	width: 25%;
+}
+
+.CollevaPic
+{
+	height: 150px;
+	background-color: lightblue;
+}
+
+.CollEvaText
+{
+	padding-left: 5%;
+	padding-right: 5%;
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.CollEvaName
+{
+	font-weight:bold;
+	font-size: 17px;
+	line-height: 30px;
+}
+
+
+*/
+#newEvaBox
+{
+	background-color: white;
+	position: absolute;
+	top:300px;
+	height: 50%;
+	bottom: 300px;
+	width: 24%;
+	left: 38%;
+	right: 38%;
+	z-index: 10;
+	text-align: center;
+}
+
+
+#chooseEvaType
+{
+
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+#EvaNameInput
+{
+	line-height: 20px;
+}
+#EvaDetailInput
+{
+	line-height: 80px;
+}
+
+
+#evaButtons
+{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+
+}
+
+#cancel
+{
+	border:none;
+	border: solid 1px;
+	background-color: white;
+	color: grey;
+	padding: 3px;
+
+}
+
+#yes
+{
+	border:none;
+	border: solid 1px lightblue;
+	background-color: rgb(51, 136, 238);
+	color: white;
+	padding: 3px;
+}
+
+
+#shadow
+{
+	position: absolute;
+	width: 100%;
+	height: 200%;
+	background-color: black;
+	opacity: 0.5;
+	z-index: 5;
+}
+[v-cloak] {
+  display:none !important;
+}

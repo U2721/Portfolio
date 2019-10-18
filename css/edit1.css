@@ -1,0 +1,138 @@
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+	height: 600px;
+	/*background-image: url(img/bg.jpg);*/
+
+	font-family: Montserrat,Myriad;
+	background-size: cover;
+	background-color: rgb(221, 255, 238,0.5);
+
+	color: black;
+	padding-top:0; 
+
+	
+}
+
+
+#naviProcess
+{
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	z-index: 2;
+	box-shadow:0px 15px 10px -15px #ccc;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	padding-top: 25px;
+	background-color: white;
+}
+
+#Process li
+{
+	list-style: none;
+	float: left;
+	/*margin-left: 30px;*/
+}
+
+li.now 
+{
+	color: blue;
+}
+
+#chooseIndex
+{
+	position: absolute;
+	top:100px;
+	left: 5%;
+	width: 30%;
+	line-height: 50px;
+	background-color: white;
+	/*padding-left: 20px;*/ 
+	box-shadow:3px 2px 3px #ccc;
+}
+
+#chooseIndex h3
+{
+	padding-left: 30px;
+}
+
+.Object
+{
+	display: block;
+	padding-left: 5px;
+	background-color: rgb(204, 255, 255);
+}
+
+
+
+.father
+{
+	display: block;
+	padding-left: 15px;
+	background-color: rgb(221, 255, 255);
+}
+
+.er
+{
+	display: block;
+	padding-left: 30px;
+	background-color: rgb(238, 255, 255);
+}
+
+
+#naviProcess button
+{
+	width: 100px;
+	height: 30px;
+	background-color: lightblue;
+	color: black;
+	border:none;
+	border:solid 1px lightblue;
+}
+
+
+#resultArea
+{
+	position: absolute;
+	top:100px;
+	right: 5%;
+	background-color: white;
+	width: 55%;
+	height: 90%;
+	color: black;
+
+}
+
+#resultArea ul
+{
+	list-style: none;
+}
+
+#okIndex
+{
+	position: relative;
+	right: 10%;
+	left: 70%;
+	width: 200px;
+	background-color: white;
+	border-radius: 0.5em;
+	border: 1px solid rgb(34, 170, 255);
+	color: rgb(34, 170, 255);
+}
+
+#okIndex:hover
+{
+	background-color:  rgb(34, 170, 255);
+	color:white;
+}
+[v-cloak] {
+  display:none !important;
+}

@@ -1,0 +1,297 @@
+
+
+#thisPage
+{
+	position: absolute;
+	top:20%;
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	background-color: white;
+}
+
+
+#dynamic-component-demo{
+	position: absolute;
+	top:10px;
+	left:10%;
+	right: 10%;
+	width: 80%;
+
+}
+
+.tab-button {
+    padding: 12px 20px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border: 1px solid rgb(51, 136, 238);
+    cursor: pointer;
+    background: white;
+    margin-bottom: -1px;
+    margin-right: -1px;
+ 
+}
+
+.tab-button:hover {
+    background: rgb(51, 136, 238);
+    color: white;
+}
+
+.tab-button.active {
+    background: rgb(51, 136, 238);
+    color: white;
+}
+
+.tab {
+    border-top: 1px solid #ccc;
+    padding: 10px;
+}
+
+.posts-tab {
+    display: flex;
+    width: 80%;
+    position: absolute;
+    left: 10%;
+    right:10%;
+}
+
+.post-sidebar {
+    max-width: 200px;
+    margin: 0;
+   /* padding-left: 20px;*/
+    text-align: center;
+    list-style-type: none;
+    border-right: 1px solid #ccc;
+    list-style:none;
+	line-height: 30px; 
+}
+
+.post-sidebar li {
+	list-style:none;
+	line-height: 30px; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-color:blue;
+   /* cursor: pointer;*/
+}
+
+.post-sidebar li:hover {
+    background:rgb(187, 221, 255);
+}
+
+.post-sidebar li.selected {
+    background: rgb(187, 221, 255);
+}
+
+.selected-post-container {
+   	position: absolute;
+	width: 50%;
+	left: 40%;
+	top:80px;
+
+}
+
+.selected-post > :first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+	height: auto;
+	/*background-image: url(img/bg.jpg);*/
+
+	font-family: Montserrat,Myriad;
+/*	background-size: cover;*/
+	background-color: rgb(221, 255, 238,0.5);
+
+
+	color: #708090;
+	padding-top:0; 
+
+	
+}
+
+
+#title{
+
+	position: fixed;
+	width: 100%;
+	height: 60px;
+	background: white;
+	color: #708090;
+	z-index: 2;
+	box-shadow:0px 15px 10px -15px #ccc;
+}
+
+
+#logo{
+	position: absolute;
+	width: 200px;
+	left: 10px;
+	vertical-align: center;
+	top: 20px;
+}
+
+#titlePic
+{	float: left;
+	margin-left: 20px;
+	width: 30px;
+	height: 30px;
+	
+}
+#titleText
+{
+	float: right;
+	margin-top: 3px;
+	font-weight: 600;
+	color: #708090;
+}
+
+#chooseUse
+{
+	position: absolute;
+	width: 25%;
+	top:23px;
+	left: 500px;
+	font-size: 15px;
+	color: #333333;
+	display:inline-block;
+
+}
+
+#chooseUse a
+{
+	text-decoration:none;
+	color: #333333;
+}
+
+#chooseUse a:link
+{
+	color: #333333;
+}
+
+#chooseUse a:hover 
+{
+	color: rgb(51, 136, 238);
+}
+
+#ManageEva
+{
+	position: absolute;
+	width: 25%;
+	left: 0px;
+	border-right: 1px solid lightgrey;
+
+}
+
+#ManageModel
+{
+	position: absolute;
+	width: 25%;
+	left: 30%;
+	border-right: 1px solid lightgrey;
+}
+
+#IndexAndMethod
+{
+	position: absolute;
+	width: 40%;
+	right: 0px;
+}
+
+#buttons
+{
+	position: absolute;
+	width: 15%;
+	top:24px;
+	right:20px;
+	font-size: 13px;
+	display: inline-block;
+}
+
+#buttons a
+{
+
+	text-decoration:none;
+	color: #333333;
+
+}
+#buttons :hover
+{
+	color: lightblue;
+}
+
+#message
+{
+	position: absolute;
+	width: 25%;
+	left: 0px;
+}
+
+#set
+{
+	position: absolute;
+	width: 25%;
+	left: 25%;
+}
+
+#mine
+{
+	position: absolute;
+	width: 50%;
+	right: 0px;
+}
+
+
+#IndexPage
+{
+	background-color: white;
+	position: absolute;
+	top:100px;
+	
+	width: 300px;
+	text-align: center;
+
+}
+
+li.IndexTitle
+{
+	background-color: rgb(221, 238, 255);
+	opacity: 0.5;
+}
+
+#IndexPage li
+{
+	list-style:none;
+	line-height: 30px; 
+
+}
+
+
+
+
+#IndexPage a
+{
+
+	text-decoration: none;
+	color: grey;
+
+}
+
+
+li.option:hover
+{
+	background-color: rgb(238, 255, 255);
+}
+[v-cloak] {
+  display:none !important;
+}
+

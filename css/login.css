@@ -1,0 +1,284 @@
+
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+	height: 600px;
+	/*background-image: url(img/bg.jpg);*/
+
+	font-family: Montserrat,Myriad;
+	background-size: cover;
+	background-color: white;
+	color: black;
+	padding-top:0; 
+
+	
+}
+
+
+
+#imgon{
+
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0.5;
+	background-color: white;
+	
+}
+
+#title{
+
+	position: fixed;
+	width: 100%;
+	height: 60px;
+	background: white;
+	color: black;
+	z-index: 10;
+	box-shadow:0px 15px 10px -15px #ccc;
+}
+
+
+#logo{
+	position: absolute;
+	width: 200px;
+	left: 10px;
+	vertical-align: center;
+	top: 20px;
+}
+#titlePic
+{	float: left;
+	margin-left: 20px;
+	width: 30px;
+	height: 30px;
+	
+}
+#titleText
+{
+	float: right;
+	margin-top: 3px;
+	font-weight: 600;
+	color: #708090;
+}
+/*
+#out{
+	position: absolute;
+	width: 100px;
+	left: 90%;
+	right: 10px;
+	top: 5px;
+	color: white;
+}
+#out a:link{
+	color: #B2FF99;
+}
+#out a:visited{
+	color: #FFFF85;
+}
+#out a:hover{
+	color: #FF704D;
+}
+#out a:active{
+	color: #FF704D;
+}
+*/
+h1{
+	font-weight: 500;
+}
+.intro{
+	margin-top: 50px;
+	top:200px;
+	position: relative;
+	width: 60%;
+	margin: 0 auto;
+	font-weight: 100;
+	opacity: 1;
+	text-align: center;
+	color: black;
+	font-size: 20px;
+	z-index: 2;
+
+}
+
+.buttons{
+	position: relative;
+	top:350px;
+	
+	width: 70%;
+	margin: 0 auto;
+	padding: 10px;
+	text-align: center;
+	color: white;
+	z-index: 2;
+
+}
+
+
+
+#login{
+	width: 150px;
+	height: 30px;
+	background-color: white;
+	text-align: center;
+	position: relative;
+	border: 1px solid grey;
+	border-radius: 3em;
+	color: black;
+}
+
+#login:hover
+{
+	background-color: #3399FF;
+	color: white;
+}
+
+#register{
+	width: 150px;
+	height: 30px;
+	background-color: white;
+	text-align: center;
+	position: relative;
+	background:transparent;
+	border: 1px solid grey;
+	border-radius: 3em;
+	color: black;
+}
+
+#register:hover
+{
+	background-color: #3399ff;
+	color: white;
+}
+
+
+
+
+#loginBox {
+	width:300px;
+	height:400px;
+	left:40%;
+	position:absolute;
+	
+	top:100px; 
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-around;
+	text-align: center;
+	opacity: 1;
+	background-color:white;
+	z-index: 10;
+	color:black; 
+	visibility: hidden;
+}
+.loginBox h3{
+	font-size: 30px;
+	font-weight: 200;
+}
+
+.loginBox input{
+	width: 200px;
+	height: 20px;
+	margin: 0 auto;
+}
+
+
+#logimg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	z-index: 4;
+	display: none;
+	background-color: grey;
+	opacity: 0.7;
+}
+#loginBox  #close {
+	position: relative;
+	left: 90%;
+	bottom: 80%;
+	width: 5px;
+	height: 5px;
+	text-decoration:none;
+
+
+}
+.loginBox a{
+	color: lightgrey;
+}
+
+.loginBox a:hover{
+	color: #FF704D;
+}
+
+
+#RegisterBox {
+	width:300px;
+	height:400px;
+	left:40%;
+	position:absolute;
+
+	top:100px; 
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-around;
+	text-align: center;
+	opacity: 1;
+	background-color:white;
+	z-index: 11;
+	color:black; 
+	visibility: hidden;
+}
+#RegisterBox h3{
+	font-size: 30px;
+	font-weight: 200;
+}
+
+#RegisterBox input{
+	width: 200px;
+	height: 20px;
+	margin: 0 auto;
+}
+
+
+
+#RegisterBox  #closeReg {
+	position: relative;
+	left: 90%;
+	bottom: 90%;
+	width: 5px;
+	height: 5px;
+	text-decoration:none;
+	
+}
+#RegisterBox a{
+	color: lightgrey;
+}
+
+#RegisterBox a:hover{
+	color: #FF704D;
+}
+
+#RegisterBox{
+	font-size:10px;
+}
+#RegisterBox .choose{
+	flex-flow: row wrap;
+	justify-content: space-around;
+} 
+#RegisterBox #vip{
+	
+	width: 15px;
+	
+
+}
+#RegisterBox #ord{
+	
+	width: 15px;
+	
+}
+[v-cloak] {
+  display:none !important;
+}

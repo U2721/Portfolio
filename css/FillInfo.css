@@ -1,0 +1,231 @@
+
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+	height: auto;
+	/*background-image: url(img/bg.jpg);*/
+
+	font-family: Montserrat,Myriad;
+	/*	background-size: cover;*/
+	background-color: rgb(221, 255, 238,0.5);
+
+
+	color: #708090;
+	padding-top:0; 
+
+	
+}
+
+
+#title{
+
+	position: fixed;
+	width: 100%;
+	height: 60px;
+	background: white;
+	color: #708090;
+	z-index: 10;
+	box-shadow:0px 15px 10px -15px #ccc;
+}
+
+
+#logo{
+	position: absolute;
+	width: 200px;
+	left: 10px;
+	vertical-align: center;
+	top: 20px;
+}
+
+#titlePic
+{	float: left;
+	margin-left: 20px;
+	width: 30px;
+	height: 30px;
+	
+}
+#titleText
+{
+	float: right;
+	margin-top: 3px;
+	font-weight: 600;
+	color: #708090;
+}
+
+#chooseUse
+{
+	position: absolute;
+	width: 25%;
+	top:23px;
+	left: 500px;
+	font-size: 15px;
+	color: #333333;
+	display:inline-block;
+
+}
+
+#chooseUse a
+{
+	text-decoration:none;
+	color: #333333;
+}
+
+#chooseUse a:link
+{
+	color: #333333;
+}
+
+#chooseUse a:hover 
+{
+	color: rgb(51, 136, 238);
+}
+
+#ManageEva
+{
+	position: absolute;
+	width: 25%;
+	left: 0px;
+	border-right: 1px solid lightgrey;
+
+}
+
+#ManageModel
+{
+	position: absolute;
+	width: 25%;
+	left: 30%;
+	border-right: 1px solid lightgrey;
+}
+
+#IndexAndMethod
+{
+	position: absolute;
+	width: 40%;
+	right: 0px;
+}
+
+#buttons
+{
+	position: absolute;
+	width: 15%;
+	top:24px;
+	right:20px;
+	font-size: 13px;
+	display: inline-block;
+}
+#buttons a
+{
+
+	text-decoration:none;
+	color: #333333;
+
+}
+
+#buttons :hover
+{
+	color: lightblue;
+}
+
+#message
+{
+	position: absolute;
+	width: 25%;
+	left: 0px;
+}
+
+#set
+{
+	position: absolute;
+	width: 25%;
+	left: 25%;
+}
+
+#mine
+{
+	position: absolute;
+	width: 50%;
+	right: 0px;
+}
+
+
+
+#myList
+{
+	background-color: white;
+	position: absolute;
+	top:100px;
+	left: 30px;
+	box-shadow: 4px 5px 10px 3px #ccc;
+	width: 300px;
+	list-style: none;
+
+	
+}
+
+
+#myList li
+{
+	width: 300px;
+	height: 30px;
+
+
+}
+
+#myList .unactive:hover
+{
+	background-color:rgb(51, 153, 255,0.2);
+}
+#myList .unactive
+{
+	color: black;
+}
+#myList .active
+{
+	background-color:rgb(51, 153, 255);
+	color: white;
+}
+
+#InfoDiv
+{
+	position: absolute;
+	background-color: white;
+	left: 30%;
+	width: 70%;
+	top:100px;		
+	min-height: 500px;
+
+}
+
+#Information
+{
+	border:1px solid lightgrey;
+	width: 500px;
+	height: 200px;
+	position: relative;
+	padding: 30px;
+	top:100px;
+	left: 15%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+}
+
+#Information .name
+{
+	display: inline-block;
+	width: 150px;
+	text-align: right;
+}
+#Information .unit
+{
+	display: inline-block;
+	width: 100px;
+	text-align: left;
+}
+[v-cloak] {
+  display:none !important;
+}
