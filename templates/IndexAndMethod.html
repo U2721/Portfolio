@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		指标库与方法库
+	</title>
+    <script>
+     var IndexMessage = {{ IndexList|safe  }};
+     var MethodMessage = {{ MethodList|safe }}
+    </script>
+    <!--报错不用管-->
+    <link rel="stylesheet" type="text/css" href="/static/css/IndexAndMethod.css">
+</head>
+<body>
+
+	<div id="title">
+		<div id="logo">
+			<!--<img id="titlePic" src="css\img\titleLog.png">-->
+			<h4 id="titleText">人机交互评估平台</h4>
+		</div>
+		<div id="chooseUse">
+			<div id="ManageEva">
+				<a href="{% url 'chooseEva' %}">评估管理</a>
+			</div>
+			<div id="ManageModel">
+			    <a href="{% url 'manageModel' %}">模板管理</a>
+			</div>
+			<div id="IndexAndMethod">
+				<a href="{% url 'indexandmethod' %}">指标库与方法库</a>
+			</div>
+		</div>
+
+		<div id="buttons">
+			<!--<div id="message">消息</div>
+			<div id="set">设置</div>-->
+            <div id="mine" ><a href="{% url 'logout' %}">退出账户</a></div>
+		</div>
+		<!--<div id="out">
+			<a href="#" >Log Out</a>
+		</div>-->
+	</div>
+<!--
+	<div id="thisPage">
+	<div id="content">
+		<div id="myOption">
+		<ul>
+			<li class="on" id="index">
+				指标库
+			</li>
+			<li class="close" id="method">
+				方法库
+			</li>
+		</ul>
+		</div>
+	</div>
+		<div id="IndexPage" class="show">
+			<ul>
+				<li class="IndexTitle">软件人机界面</li>
+				<li class="option"><a href="" >易学性</a></li>
+				<li class="option"><a href="">容错性</a></li>
+				<li class="option"><a href="">易用性</a></li>
+				<li class="IndexTitle">系统任务流程</li>
+				<li class="option"><a href="">有效性</a></li>
+				<li class="IndexTitle">硬件人机交互</li>
+				<li class="option"><a href="">视觉显示</a></li>
+				<li class="option"><a href="">结构布局</a></li>
+				<li class="option"><a href="">环境适应</a></li>
+				<li class="IndexTitle">操作员</li>
+				<li class="option"><a href="">负荷</a></li>
+				<li class="option"><a href="">满意度</a></li>
+				<li class="option"><a href="">人机协同</a></li>
+				<li class="option"><a href="">基于不同席位典型任务的操作员能力指标</a></li>
+			</ul>
+
+
+		</div>
+
+		<div id="MethodPage" class="off" >
+			<ul>
+				<li class="option"><a href="">启发式评估法</a></li>
+				<li class="option"><a href="">可用性测试</a></li>
+				<li class="option"><a href="">任务分析</a></li>
+				<li class="option"><a href="">主观感知</a></li>
+				<li class="option"><a href="">眼动测试</a></li>
+
+			</ul>
+		</div>
+
+
+		<div id="contentText">
+			<p>巴拉巴拉从数据库中取得</p>
+		</div>
+
+
+
+	</div>
+
+-->
+<div id="thisPage">
+	<div id="dynamic-component-demo">
+
+		<button v-for="tab in tabs" v-bind:key="tab" v-bind:class="['tab-button',{active:currentTab === tab}]" v-on:click="currentTab = tab" >{% verbatim %}{{tab}}{% endverbatim %}
+		</button>
+
+		<keep-alive>
+			<component v-bind:is="currentTabComponent" class="tab"></component>
+		</keep-alive>
+	</div>
+</div>
+
+</body>
+
+<script type="text/javascript" src="/static/js/vue.js"></script>
+
+<script type="text/javascript" src="/static/js/IndexAndMethod.js"></script>
+
+<script type="text/x-template" id="myTemplate">
+
+	<div class="post-tab">
+		<ul class="post-sidebar">
+			<li v-for="post in posts" v-bind:key="post.id" v-bind:class="{selected:post === selectedPost}" v-on:click="selectedPost=post"> {% verbatim %}{{post.title}}{% endverbatim %}
+			</li>
+		</ul>
+		<div class="selected-post-container">
+			<div v-if="selectedPost" class="selected-post" >
+				<h3>{% verbatim %}{{ selectedPost.title }}{% endverbatim %}</h3>
+				<div v-html="selectedPost.content">
+
+				</div>
+			</div>
+			<strong v-else> 请点击某个标签页 </strong>
+		</div>
+	</div>
+
+</script>
+
+
+</html>

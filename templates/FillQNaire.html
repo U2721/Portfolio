@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>填写问卷</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/FillQNaire.css">
+</head>
+<script>
+    var Question={{ QuestionList|safe }}
+    var SurveyId={{ SurveyId|safe }}
+    var readOnly={{ readOnly|safe }}
+</script>
+<body>
+
+	<div id="title">
+		<div id="logo">
+		<!--<img id="titlePic" src="css\img\titleLog.png">-->
+			<h4 id="titleText">人机交互评估平台</h4>
+		</div>
+		<div id="chooseUse">
+			<div id="ManageEva">
+				<a href="{% url 'chooseEva' %}">评估管理</a>
+			</div>
+			<div id="ManageModel">
+			    <a href="{% url 'manageModel' %}">模板管理</a>
+			</div>
+			<div id="IndexAndMethod">
+				<a href="{% url 'indexandmethod' %}">指标库与方法库</a>
+			</div>
+		</div>
+
+		<div id="buttons">
+			<!--<div id="message">消息</div>
+			<div id="set">设置</div>-->
+            <div id="mine" ><a href="{% url 'logout' %}">退出账户</a></div>
+		</div>
+		<!--<div id="out">	
+			<a href="#" >Log Out</a>
+		</div>-->
+	</div>
+
+
+
+
+		<div class="preview"  id="previewDiv" v-cloak>
+            <div id="htmlButtons">
+		        <button id="cancel" onclick="window.location.href={% url 'chooseEva' %}">取消</button>
+		        <button id="submit" @click='submitQNaire()'>提交</button>
+		    </div>
+		<div  class="previewQuestion" v-for="que in questions" >
+
+			<div v-if="que.type=='SingleChoose'">
+				<div class="previewTitle">
+				{% verbatim %}{{ que.id }}{% endverbatim %}. <span>[单选题]</span> {% verbatim %}{{ que.title }}{% endverbatim %}
+				</div>
+				
+				<input v-if="que.ChooseA!=''" name="choose" type="radio" value="A" v-model="que.answer" />{% verbatim %}{{ que.ChooseA }}{% endverbatim %} <br>
+				
+				<input v-if="que.ChooseB!=''" name="choose" type="radio" value="B" v-model="que.answer"/>{% verbatim %}{{ que.ChooseB }}{% endverbatim %}<br>
+				<input v-if="que.ChooseC!=''" name="choose" type="radio" value="C" v-model="que.answer"/>{% verbatim %}{{ que.ChooseC }}{% endverbatim %}<br>
+				<input v-if="que.ChooseD!=''" name="choose" type="radio" value="D" v-model="que.answer"/>{% verbatim %}{{ que.ChooseD }}{% endverbatim %}<br>
+			</div>
+
+			<div v-else-if="que.type=='MultiChoose'">
+				<div class="previewTitle">
+				{% verbatim %}{{ que.id }}{% endverbatim %}. <span>[多选题]</span> {% verbatim %}{{ que.title }}{% endverbatim %}
+				</div>
+				<input v-if="que.ChooseA!=''" name="choose" type="checkbox" value="A" v-model="que.answer"/>{% verbatim %}{{ que.ChooseA }}{% endverbatim %}<br>
+				<input v-if="que.ChooseB!=''" name="choose" type="checkbox" value="B" v-model="que.answer"/>{% verbatim %}{{ que.ChooseB }}{% endverbatim %}<br>
+				<input v-if="que.ChooseC!=''" name="choose" type="checkbox" value="C" v-model="que.answer"/>{% verbatim %}{{ que.ChooseC }}{% endverbatim %}<br>
+				<input v-if="que.ChooseD!=''" name="choose" type="checkbox" value="D" v-model="que.answer"/>{% verbatim %}{{ que.ChooseD }}{% endverbatim %}<br>
+			 </div>
+
+			 <div v-else-if="que.type=='FillInBlank'">
+			 	<div class="previewTitle">
+				{% verbatim %}{{ que.id }}{% endverbatim %}.  {% verbatim %}{{ que.title }}{% endverbatim %}
+				</div>	
+				<input type="text" name="blank" style="width: 300px;height: 25px;" placeholder="请回答问题" v-model="que.answer">
+			</div>
+
+			<div v-else-if="que.type=='Scale'">
+				<div class="previewTitle">
+				{% verbatim %}{{ que.id }}{% endverbatim %}.  {% verbatim %}{{ que.title }}{% endverbatim %}
+				</div>	
+				<div class="scaleContent">
+				<span> {% verbatim %}{{ que.lowest }}{% endverbatim %}</span>
+				<div  class="step" v-for="n in que.ScaleCount">
+					<input name="scale" type="radio" :value="n" v-model="que.answer" />{% verbatim %}{{ n }}{% endverbatim %}
+				</div>
+				<span> {% verbatim %}{{ que.highest }}{% endverbatim %}</span>
+				</div>
+				
+			</div>
+			<div v-else>
+				<div class="Paragraph">
+				{% verbatim %}{{ que.title }}{% endverbatim %}
+				</div>
+			</div>
+
+	</div>
+
+	</div>
+
+</body>
+<script type="text/javascript" src="/static/js/axios.min.js"></script>
+<script type="text/javascript" src="/static/js/vue.js"></script>
+<script type="text/javascript" src="/static/js/FillQNaire.js"></script>
+
+
+ {% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}
+
+</html>
