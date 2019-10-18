@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		展示评估
+	</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/chooseEva.css">
+    <script type="text/javascript" src="/static/js/axios.min.js"></script>
+    <script type="text/javascript" src="/static/js/vue.js"></script>
+    <script type="text/javascript" src="/static/js/echarts.min.js"></script>
+	<script type="text/javascript" src="/static/js/echarts-wordcloud.min.js"></script>
+    <script>
+        var AllAssess={{ EvaList|safe }}
+        var User={{ User|safe }}
+        var AssessNameList={{ AssessNameList|safe }}
+        var Recommend={{ Recommend|safe }}
+        var WCResults={{ WCResults|safe }}
+    </script>
+</head>
+<body>
+	<div id="title">
+		<div id="logo">
+		<!--	<img id="titlePic" src="css\img\titleLog.png"> -->
+			<h4 id="titleText">人机交互评估平台</h4>
+		</div>
+		<div id="chooseUse">
+			<div id="ManageEva">
+				<a href="{% url 'chooseEva' %}">评估管理</a>
+			</div>
+			<div id="ManageModel">
+				<a href="{% url 'manageModel' %}">模板管理</a>
+			</div>
+			<div id="IndexAndMethod">
+				<a href="{% url 'indexandmethod' %}">指标库与方法库</a>
+			</div>
+		</div>
+
+		<div id="buttons">
+			<div id="message">欢迎您，{{ User.username }}</div>
+			<!--<div id="set">设置</div>-->
+
+            <div id="mine" ><a href="{% url 'logout' %}">退出账户</a></div>
+
+		</div>
+		<!--<div id="out">
+			<a href="#" >Log Out</a>
+		</div>-->
+	</div>
+<div id="app" v-cloak>
+    <div id="left">
+	<div id="navi">
+		<div id="chooseCondition">
+			<input type="buttons" name="All" value="全部" readonly="readonly" @click="changeAll()">
+			<input type="buttons" name="Ing" value="进行中" readonly="readonly" @click="changeIng()">
+			<input type="buttons" name="End" value="已完成" readonly="readonly" @click="changeEnd()">
+		</div>
+
+		<div id="search">
+			<input type="text" name="searchText" placeholder="请输入评估关键字" v-model="searchinput" list="AssessName">
+			<datalist id="AssessName">
+                <option v-for="evaname in AssessNameList">{% verbatim %}{{ evaname }}{% endverbatim %}</option>
+            </datalist>
+            <a @click="searchAssess()">搜索</a>
+		</div>
+
+		<div id="newEva">
+			<input type="buttons" name="newEva" value="+ 新建评估" readonly="readonly" @click="openNewEva()">
+
+        </div>
+
+		<div id="changeOrder">
+		<!--	<img src="css\img\tile.png">
+			<img src="css\img\list.png">
+		-->
+		</div>
+	</div>
+
+<div id="AllEvaluation" style="visibility: visible;">
+
+		<div class="Eva" v-for="eva in assess">
+			<div class="evaPic">
+				<p>Task</p>
+			</div>
+			<div class="EvaText">
+
+			<p class="EvaName"> {% verbatim %}{{ eva.name }}{% endverbatim %}</p>
+			<p class="EvaOne">{% verbatim %}{{ eva.InShort }}{% endverbatim %}</p>
+			<p class="PersonName">发起者		{% verbatim %}{{ eva.person }}{% endverbatim %}</p>
+			<p class="EvaStartTime">开始时间  {% verbatim %}{{ eva.BeginTime }}{% endverbatim %}</p>
+			</div>
+
+			<div class="EvaProcessBar">
+				<div class="container">
+ 				 <div class="skills">
+ 				 	<div class="html" :style="'width:'+eva.process+'%'">
+ 				 		{% verbatim %}{{ eva.process }}{% endverbatim %}%
+ 				 	</div>
+ 				 </div>
+				</div>
+			</div>
+
+			<div class="EvaButton">
+				<button>编辑</button>
+				<button @click='lookMore(eva)'>…</button>
+				<!--<input type="buttons" name="edit" value="编辑" readonly="readonly">
+				<input type="buttons" name="more" value="···">-->
+			</div>
+
+			<div class ="moreInfo" :id="getMoreId(eva,'All')" style="visibility: hidden;">
+				<ul>
+
+					<li @click="getFillEva(eva)" >录入数据</li>
+					<li @click="analysisEva(eva)">分析数据</li>
+					<li @click="deleteEva(eva)">删除评估</li>
+                    <li @click="setModel(eva)">设为模板</li>
+
+				</ul>
+			</div>
+
+
+		</div>
+
+</div>
+
+<div id="IngEvaluation" style="visibility: hidden;">
+
+		<div class="Eva" v-for="eva in assess" v-if="eva.condition=='ing'">
+			<div class="evaPic">
+				<p>Task</p>
+			</div>
+            <div class="EvaText">
+			<p class="EvaName"> {% verbatim %}{{ eva.name }}{% endverbatim %}</p>
+			<p class="EvaOne">{% verbatim %}{{ eva.InShort }}{% endverbatim %}</p>
+			<p class="PersonName">发起者		{% verbatim %}{{ eva.person }}{% endverbatim %}</p>
+			<p class="EvaStartTime">开始时间  {% verbatim %}{{ eva.BeginTime }}{% endverbatim %}</p>
+			</div>
+
+			<div class="EvaProcessBar">
+				<div class="container">
+
+ 				 <div class="skills">
+ 				 	<div class="html" :style="'width:'+eva.process+'%'">
+ 				 		{% verbatim %}{{ eva.process }}{% endverbatim %}%
+ 				 	</div>
+ 				 </div>
+				</div>
+			</div>
+
+			<div class="EvaButton">
+				<button>编辑</button>
+				<button @click='lookMore(eva)'>…</button>
+				<!--<input type="buttons" name="edit" value="编辑" readonly="readonly">
+				<input type="buttons" name="more" value="···">-->
+			</div>
+
+			<div class ="moreInfo" :id="getMoreId(eva,'Ing')" style="visibility: hidden;">
+				<ul>
+					<li @click="getFillEva(eva)" >录入数据</li>
+					<li @click="analysisEva(eva)">分析数据</li>
+					<li @click="deleteEva(eva)">删除评估</li>
+                    <li @click="setModel(eva)">设为模板</li>
+				</ul>
+			</div>
+
+
+		</div>
+
+</div>
+
+<div id="EndEvaluation" style="visibility: hidden;">
+
+		<div class="Eva" v-for="eva in assess" v-if="eva.condition=='End'">
+			<div class="evaPic">
+				<p>Task</p>
+			</div>
+			<div class="EvaText">
+			<p class="EvaName">{% verbatim %}{{ eva.name }}{% endverbatim %}</p>
+			<p class="EvaOne">{% verbatim %}{{ eva.InShort }}{% endverbatim %}</p>
+			<p class="PersonName">发起者		{% verbatim %}{{eva.person}}{% endverbatim %}</p>
+			<p class="EvaStartTime">开始时间  {% verbatim %}{{ eva.BeginTime }}{% endverbatim %}</p>
+			</div>
+
+			<div class="EvaProcessBar">
+				<div class="container">
+ 				 <div class="skills">
+ 				 	<div class="html" :style="'width:'+eva.process+'%'">
+ 				 		{% verbatim %}{{ eva.process }}{% endverbatim %}%
+ 				 	</div>
+ 				 </div>
+				</div>
+			</div>
+
+			<div class="EvaButton">
+				<button>编辑</button>
+				<button @click='lookMore(eva)'>…</button>
+				<!--<input type="buttons" name="edit" value="编辑" readonly="readonly">
+				<input type="buttons" name="more" value="···">-->
+			</div>
+
+			<div class ="moreInfo" :id="getMoreId(eva,'End')" style="visibility: hidden;">
+				<ul>
+					<li @click="getFillEva(eva)" >录入数据</li>
+					<li @click="analysisEva(eva)">分析数据</li>
+					<li @click="deleteEva(eva)">删除评估</li>
+                    <li @click="setModel(eva)">设为模板</li>
+				</ul>
+			</div>
+
+
+		</div>
+
+</div>
+</div>
+
+    <div id="right">
+        <div id="recommend">
+			<h4>猜您想看...</h4>
+			<ul>
+				<li v-for="reeva in recommendList" @click="chooseRecommend(reeva)">{% verbatim %}{{ reeva.name }}{% endverbatim %}</li>
+			</ul>
+
+		</div>
+		<div id="cloud">
+			<h4>大家都在搜...</h4>
+			<div class="wordcloud" id="WordCloud" style="width:100%;height: 100% ;margin-top: 20px;margin-bottom: 20px;">
+			</div>
+		</div>
+    </div>
+</div>
+</body>
+
+
+<script type="text/javascript" src="/static/js/chooseEva.js"></script>
+ {% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+ {% endif %}
+
+</html>

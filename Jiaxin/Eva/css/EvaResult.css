@@ -1,0 +1,643 @@
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+	height: auto;
+	/*background-image: url(img/bg.jpg);*/
+
+	font-family: Montserrat,Myriad;
+	/*	background-size: cover;*/
+	background-color: rgb(221, 255, 238,0.5);
+
+
+	color: #708090;
+	padding-top:0; 
+
+	
+}
+
+
+#title{
+
+	position: fixed;
+	width: 100%;
+	height: 60px;
+	background: white;
+	color: #708090;
+	z-index: 2;
+	box-shadow:0px 15px 10px -15px #ccc;
+}
+
+
+#logo{
+	position: absolute;
+	width: 200px;
+	left: 10px;
+	vertical-align: center;
+	top: 20px;
+}
+
+#titlePic
+{	float: left;
+	margin-left: 20px;
+	width: 30px;
+	height: 30px;
+	
+}
+#titleText
+{
+	float: right;
+	margin-top: 3px;
+	font-weight: 600;
+	color: #708090;
+}
+
+#chooseUse
+{
+	position: absolute;
+	width: 25%;
+	top:23px;
+	left: 500px;
+	font-size: 15px;
+	color: #333333;
+	display:inline-block;
+
+}
+
+#chooseUse a
+{
+	text-decoration:none;
+	color: #333333;
+}
+
+#chooseUse a:link
+{
+	color: #333333;
+}
+
+#chooseUse a:hover 
+{
+	color: rgb(51, 136, 238);
+}
+
+#ManageEva
+{
+	position: absolute;
+	width: 25%;
+	left: 0px;
+	border-right: 1px solid lightgrey;
+
+}
+
+#ManageModel
+{
+	position: absolute;
+	width: 25%;
+	left: 30%;
+	border-right: 1px solid lightgrey;
+}
+
+#IndexAndMethod
+{
+	position: absolute;
+	width: 40%;
+	right: 0px;
+}
+
+#buttons
+{
+	position: absolute;
+	width: 15%;
+	top:24px;
+	right:20px;
+	font-size: 13px;
+	display: inline-block;
+}
+
+#buttons a
+{
+
+	text-decoration:none;
+	color: #333333;
+
+}
+
+#buttons :hover
+{
+	color: lightblue;
+}
+
+#message
+{
+	position: absolute;
+	width: 25%;
+	left: 0px;
+}
+
+#set
+{
+	position: absolute;
+	width: 25%;
+	left: 25%;
+}
+
+#mine
+{
+	position: absolute;
+	width: 50%;
+	right: 0px;
+}
+
+
+
+#myList
+{
+	background-color: white;
+	position: absolute;
+	top:100px;
+	left: 30px;
+	box-shadow: 4px 5px 10px 3px #ccc;
+	width: 300px;
+	list-style: none;
+
+
+}
+
+
+#myList li
+{
+	width: 300px;
+	height: 30px;
+
+
+}
+
+#myList .unactive:hover
+{
+	background-color:rgb(51, 153, 255,0.2);
+}
+#myList .unactive
+{
+	color: black;
+}
+#myList .active
+{
+	background-color:rgb(51, 153, 255);
+	color: white;
+}
+
+#InfoDiv
+{
+	position: absolute;
+	background-color: white;
+	left: 30%;
+	width: 60%;
+	right: 10%;
+	top:100px;
+	min-height: 500px;
+	max-height: 700px;
+	overflow-y: scroll;
+}
+
+
+
+#Info
+{
+	text-align: center;
+}
+
+.question
+{
+	/*height: 40%;*/
+	position:relative;
+	margin-top:20px;
+	margin-bottom: 20px;
+	/*height: 400px;*/
+	display: flex;
+	flex-direction: column;
+	min-height: 350px;
+	max-height: 500px;
+	overflow-y:scroll;
+}
+
+.QuestionTitle
+{
+	justify-content: center;
+	font-weight: 700;
+	margin: 0 auto;
+}
+.QuestionTitle p
+{
+	justify-content: center;
+}
+
+.results
+{
+	height: 60%;
+}
+
+.resultsTable
+{
+	border-collapse: collapse;
+	width: 80%;
+	margin: 0 auto;
+	border: 1px solid #555;
+	margin-bottom: 30px;
+}
+.tableResult p
+{
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+.resultsTable th
+{
+	color: #fff;
+	background-color: #555;
+	border: 1px solid #555;
+	font-size: 12px;
+	padding: 3px;
+	vertical-align: top;
+	text-align: left;
+}
+.resultsTable tr:nth-child(odd)
+{
+	border: 1px solid lightgrey;
+	background-color: white;
+}
+.resultsTable tr:nth-child(even)
+{
+	border: 1px solid lightgrey;
+	background-color: lightgrey;
+}
+
+
+.chooseButtons
+{
+	position: relative;
+	right: 10%;
+	left: 75%;
+	height: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 15%;
+}
+
+.chooseButtons button:hover
+{
+	background-color: blue;
+	color: white;
+}
+
+.FIBtable
+{
+	border-collapse: collapse;
+	width: 80%;
+	margin: 0 auto;
+	border: 1px solid #555;
+	margin-bottom: 30px;
+	max-height: 100px;
+	overflow-y: scroll;
+}
+
+.FIBtable th
+{
+	color: #fff;
+	background-color: #555;
+	border: 1px solid #555;
+	font-size: 12px;
+	padding: 3px;
+	vertical-align: top;
+	text-align: left;
+}
+.FIBtable tr:nth-child(odd)
+{
+	border: 1px solid lightgrey;
+	background-color: white;
+}
+.FIBtable tr:nth-child(even)
+{
+	border: 1px solid lightgrey;
+	background-color: lightgrey;
+}
+
+.FIBtable tbody
+{
+	display:block;
+	height:200px;
+	overflow-y:scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+#Information
+{
+
+	width: 700px;
+	min-height: 300px;
+
+	position: relative;
+	padding: 30px;
+	top:0px;
+	left: 5%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+
+
+}
+/*
+#Information .name
+{
+	display: inline-block;
+	width: 150px;
+	text-align: right;
+
+}
+#Information .data
+{
+	display: inline-block;
+	width: 100px;
+	text-align: center;
+}
+#Information .unit
+{
+	display: inline-block;
+	width: 100px;
+	text-align: left;
+}
+
+#Information .des
+{
+	width: 300px;
+	margin:0 auto;
+	font-weight: 700;
+
+}
+
+*/
+#Information table
+{
+    width: 700px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-collapse:collapse;
+	text-align:center;
+}
+#Information table th
+{
+    border-top: 1.5px solid rgb(34, 170, 255);
+	border-bottom: 1.5px solid rgb(34, 170, 255);
+	font-weight: 500;
+	background-color:rgb(34, 170, 255,0.7);
+	color:white;
+}
+#Information table td
+{
+    border-top: 1.5px solid rgb(34, 170, 255);
+	border-bottom: 1.5px solid rgb(34, 170, 255);
+	background-color: rgb(34, 170, 255,0.1);
+}
+
+#AllHeuInfo
+{
+	position: absolute;
+	top:50px;
+	width: 85%;
+	min-height: 500px;
+
+	left: 5%;
+
+	background-color: white;
+	padding-left:0%;
+	text-align: center;
+}
+#HeuInfo
+{
+	position: absolute;
+	top:100px;
+	width: 90%;
+	min-height: 500px;
+
+	left: 5%;
+	background-color: white;
+	padding-left:0%;
+	text-align: center;
+}
+
+#HeuInfo button
+{
+	position:relative;
+	width: 200px;
+	background-color: white;
+	border-radius: 0.5em;
+	border: 1px solid rgb(34, 170, 255);
+	color: rgb(34, 170, 255);
+	left: 15%;
+
+}
+#HeuInfo button:hover
+{
+	background-color: rgb(34, 170, 255,0.1);
+}
+#Alltables
+{
+
+	width: 700px;
+	/*height: 500px;*/
+	display: flex;
+	flex-direction:column;
+	flex-wrap: wrap;
+
+
+
+}
+#tables
+{
+
+	width: 700px;
+	/*height: 500px;*/
+	display: flex;
+	flex-direction:column;
+	flex-wrap: wrap;
+
+
+
+}
+#AllHeuInfo table
+{
+	width: 700px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	border-collapse:collapse;
+}
+
+
+#AllHeuInfo table th
+{
+	border-top: 1.5px solid rgb(34, 170, 255);
+	border-bottom: 1.5px solid rgb(34, 170, 255);
+	font-weight: 500;
+	background-color:rgb(34, 170, 255,0.7);
+	color:white;
+}
+
+#AllHeuInfo table td
+{
+	border-top: 1.5px solid rgb(34, 170, 255);
+	border-bottom: 1.5px solid rgb(34, 170, 255);
+	background-color: rgb(34, 170, 255,0.1);
+}
+
+
+
+
+#HeuInfo table
+{
+	width: 700px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-collapse:collapse;
+}
+
+
+#HeuInfo table th
+{
+	border-top: 1.5px solid rgb(34, 170, 255);
+	border-bottom: 1.5px solid rgb(34, 170, 255);
+	font-weight: 500;
+	background-color:rgb(34, 170, 255,0.7);
+	color:white;
+}
+#HeuInfo table td
+{
+	border-top: 1.5px solid rgb(34, 170, 255);
+	border-bottom: 1.5px solid rgb(34, 170, 255);
+	background-color: rgb(34, 170, 255,0.1);
+}
+
+#QNaire
+{
+	position: absolute;
+	top:100px;
+	width: 100%;
+	min-height: 500px;
+	max-height: 800px;
+	overflow-y: scroll;
+	
+	background-color: white;
+	padding-left:0%;
+	text-align: center;
+}
+#previewDiv
+{
+	position: absolute;
+	top:50px;
+	width: 100%;
+	/*left: 5%;
+	right: 5%;*/
+	height: auto;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	z-index: 10;
+
+}
+#htmlButtons
+{
+	display: flex;
+	flex-direction: row;
+	width: 250px;
+	position: relative;
+	right: 15%;
+	left: 60%;
+	justify-content: space-around;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#cancel
+{
+	position: relative;
+	right: 10%;
+	width: 100px;
+	border: 1px solid lightgrey;
+	border-radius: 0.5em;
+	background-color: lightgrey;
+	color: black;
+
+}
+
+#submit
+{
+	position: relative;
+	right: 5%; 
+	width: 100px;
+	border: 1px solid rgb(51, 153, 255,0.7);
+	border-radius: 0.5em;
+	background-color: rgb(51, 153, 255,0.7);
+	color: white;
+
+
+}
+#submit:hover
+{
+	background-color: rgb(51, 153, 255,1);
+}
+#cancel:hover
+{
+	background-color: grey;
+	color: white;
+}
+
+.previewQuestion
+{
+	padding-top: 15px;
+	padding-bottom: 20px;
+	position: relative;	
+	width:100%;
+
+	line-height: 50px;
+	border-bottom: 1px solid lightgrey;
+	text-align: center;
+	color: #003399;
+	text-align: center;
+}
+.previewQuestion .previewTitle
+{
+	font-weight: 900;
+}
+
+.previewQuestion .previewTitle span
+{
+	color: #FFCC66;
+}
+
+.scaleContent 
+{
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	width: 60%;
+	left: 20%;
+	right: 20%;
+	padding-left: 10%;
+	padding-right: 10%;
+
+
+
+}
+.step
+{
+	width: 50px;
+	padding-left: 5px;
+	padding-right:5px;
+
+}
+
+[v-cloak] {
+  display:none !important;
+}

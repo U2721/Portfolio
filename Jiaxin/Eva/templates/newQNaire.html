@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+	<title>新建问卷</title>
+    <script>
+        var AllQuestions={{ AllQuestions|safe }}
+        var QNaire={{ QNaire|safe }}
+    </script>
+    <link rel="stylesheet" type="text/css" href="/static/css/newQNaire.css">
+</head>
+<body>
+
+<div id="app" v-cloak>
+	<div id="title">
+		<div id="logo">
+			<h4 id="titleText">{% verbatim %}{{ QNaire.name }}{% endverbatim %}</h4>
+		</div>
+
+		<div id="TypeButtons">
+			<button id="SingleChoose" @click='addSingleChoose()'>单选题</button>
+			<button id="MultiChoose" @click='addMultiChoose()'>多选题</button>
+			<button id="FillInBlank" @click='addFillInBlank()'>填空题</button>
+			<button id="Scale" @click='addScale()'>量表题</button>
+			<button id="Paragraph" @click='addParagraph()'>段落描述</button>
+		</div>
+
+		<div id="FunctionButtons">
+			<button id="preview" @click='displayPreview()'>预览</button>
+			<button id="ok" @click='saveQNaire()'>完成编辑</button>
+		</div>
+
+
+	</div>
+	<div id="zhezhao" style="display: none;">
+		
+	</div>
+   <!-- <form method="post" action="/addQNaire/" id="addQNaire" name="addQNaire">
+        <div style="visibility:visible">
+
+            <input  v-for="que in questions" type="text" name="questions"  :value="">
+
+        </div>
+    </form>-->
+	<div id="questions">
+
+		<div class="question" v-for="que in questions">
+
+			
+			<div v-if="que.type=='SingleChoose'||que.type=='MultiChoose'">
+				{% verbatim %}{{ que.id }}{% endverbatim %}.题目： <input type="text" name="title" placeholder="请输入题目" v-model="que.title" style="width: 300px;height: 30px;"> <br>
+				选项A：<input type="text" name="ChooseA" placeholder="请输入选项A内容" v-model="que.ChooseA" style="width: 200px;height: 25px;">
+				选项B：<input type="text" name="ChooseB" placeholder="请输入选项B内容" v-model="que.ChooseB" style="width: 200px;height: 25px;"><br>
+				选项C：<input type="text" name="ChooseC" placeholder="请输入选项C内容" v-model="que.ChooseC" style="width: 200px;height: 25px;">
+				选项D：<input type="text" name="ChooseD" placeholder="请输入选项D内容" v-model="que.ChooseD" style="width: 200px;height: 25px;">
+			</div>
+			<div v-else-if="que.type=='FillInBlank'">
+				{% verbatim %}{{ que.id }}{% endverbatim %}.题目： <input type="text" name="title" placeholder="请输入题目" v-model="que.title" style="width:500px;height:30px;">
+			</div>
+			<div v-else-if="que.type=='Scale'">
+				{% verbatim %}{{ que.id }}{% endverbatim %}.题目： <input type="text" name="title" placeholder="请输入题目或段落" v-model="que.title" style="width: 300px;height: 30px;"> <br>
+				  最低：<input type="text" name="lowest" placeholder="请输入量表最低描述"  v-model="que.lowest" style="width: 200px;height: 25px;" >
+				  最高：<input type="text" name="highest" placeholder="请输入量表最高描述" v-model="que.highest" style="width: 200px;height: 25px;">
+				  量表等级：<input type="text" name="count" placeholder="请输入量表等级(2-10)" v-model.number="que.ScaleCount" style="width: 100px;height: 25px;">
+			</div>
+			<div v-else> 
+				<input type="text" name="title" placeholder="请输入段落" v-model="que.title" style="width: 500px;height: 100px;"> 
+			</div>
+
+			<div id="littleButtons">
+				<button  id="delete" @click='deleteQuestion(que)'>删除</button>
+			</div>
+		</div>
+	</div>
+
+		<div class="preview" style="display: none" id="previewDiv">
+		<div  class="previewQuestion" v-for="que in questions" >
+
+			<div v-if="que.type=='SingleChoose'">
+				<div class="previewTitle">
+				{% verbatim %}{{ que.id }}{% endverbatim %}. <span>[单选题]</span> {% verbatim %}{{ que.title }}{% endverbatim %}
+				</div>
+				
+				<input v-if="que.ChooseA!=''" name="choose" type="radio" value="A" />{% verbatim %}{{ que.ChooseA }}{% endverbatim %} <br>
+				
+				<input v-if="que.ChooseB!=''" name="choose" type="radio" value="B" />{% verbatim %}{{ que.ChooseB }}{% endverbatim %}<br>
+				<input v-if="que.ChooseC!=''" name="choose" type="radio" value="C" />{% verbatim %}{{ que.ChooseC }}{% endverbatim %}<br>
+				<input v-if="que.ChooseD!=''" name="choose" type="radio" value="D" />{% verbatim %}{{ que.ChooseD }}{% endverbatim %}<br>
+			</div>
+
+			<div v-else-if="que.type=='MultiChoose'">
+				<div class="previewTitle">
+				{% verbatim %}{{ que.id }}{% endverbatim %}. <span>[多选题]</span> {% verbatim %}{{ que.title }}{% endverbatim %}
+				</div>
+				<input v-if="que.ChooseA!=''" name="choose" type="checkbox" value="A" />{% verbatim %}{{ que.ChooseA }}{% endverbatim %}<br>
+				<input v-if="que.ChooseB!=''" name="choose" type="checkbox" value="B" />{% verbatim %}{{ que.ChooseB }}{% endverbatim %}<br>
+				<input v-if="que.ChooseC!=''" name="choose" type="checkbox" value="C" />{% verbatim %}{{ que.ChooseC }}{% endverbatim %}<br>
+				<input v-if="que.ChooseD!=''" name="choose" type="checkbox" value="D" />{% verbatim %}{{ que.ChooseD }}{% endverbatim %}<br>
+			 </div>
+
+			 <div v-else-if="que.type=='FillInBlank'">
+			 	<div class="previewTitle">
+				{% verbatim %}{{ que.id }}{% endverbatim %}.  {% verbatim %}{{ que.title }}{% endverbatim %}
+				</div>	
+				<input type="text" name="blank" style="width: 300px;height: 25px;" placeholder="请回答问题">
+			</div>
+
+			<div v-else-if="que.type=='Scale'">
+				<div class="previewTitle">
+				{% verbatim %}{{ que.id }}{% endverbatim %}.  {% verbatim %}{{ que.title }}{% endverbatim %}
+				</div>	
+				<div class="scaleContent">
+				<span> {% verbatim %}{{ que.lowest }}{% endverbatim %}</span>
+				<div  class="step" v-for="n in que.ScaleCount">
+					<input name="scale" type="radio" value="n" />{% verbatim %}{{ n }}{% endverbatim %}
+				</div>
+				<span> {% verbatim %}{{ que.highest }}{% endverbatim %}</span>
+				</div>
+				
+			</div>
+			<div v-else>
+				<div class="Paragraph">
+				{% verbatim %}{{ que.title }}{% endverbatim %}
+				</div>
+			</div>
+
+	</div>
+			<div id="buttonClose">
+			<button id="close" @click="closePreview()">关闭</button>
+			</div>
+	</div>
+</div>
+</body>
+<!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+<script type="text/javascript" src="/static/js/vue.js"></script>
+<script type="text/javascript" src="/static/js/axios.min.js"></script>
+<script type="text/javascript" src="/static/js/newQNaire.js"></script>
+
+
+</html>

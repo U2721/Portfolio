@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>填写评估 </title>
+	<link rel="stylesheet" type="text/css" href="/static/css/evaPlan.css">
+    <script>
+        var PlanList={{ plans|safe }}
+        var QNaires={{ QNaires|safe }}
+        var Assess={{ Assess|safe }}
+        var readOnly={{ readOnly|safe }}
+        var HeuRegulars={{ HeuRegulars|safe }}
+    </script>
+</head>
+<body>
+
+	<div id="title">
+		<div id="logo">
+			<!--<img id="titlePic" src="css\img\titleLog.png">-->
+			<h4 id="titleText">人机交互评估平台</h4>
+		</div>
+		<div id="chooseUse">
+			<div id="ManageEva">
+				<a href="{% url 'chooseEva' %}">评估管理</a>
+			</div>
+			<div id="ManageModel">
+                <a href="{% url 'manageModel' %}">模板管理</a>
+			</div>
+			<div id="IndexAndMethod">
+				<a href="{% url 'indexandmethod' %}">指标库与方法库</a>
+			</div>
+		</div>
+
+        <div id="buttons">
+			<!--<div id="message">消息</div>
+			<div id="set">设置</div>-->
+            <div id="mine" ><a href="{% url 'logout' %}">退出账户</a></div>
+		</div>
+		<!--<div id="out">
+			<a href="#" >Log Out</a>
+		</div>-->
+	</div>
+
+	<div id="app" v-cloak>
+		<div id="listApp">
+			<div id="myList">
+				<li v-for="item in plans" :class="item.id==activePlan?'active':'unactive'" @click="clickPlan(item.id)">
+					{% verbatim %}{{ item.PlanName }}{% endverbatim %}
+				</li>
+			</div>
+		</div>
+
+		<div id="InfoDiv">
+            <button id="saveAll" @click="postInfo()">全部保存</button>
+			<button id="saveNow" @click="saveNowPlan()">保存</button>
+
+			<div id="Information">
+
+
+				<div class="inputInfo" v-for="info in InfoList" v-if="info.name==PlanInfoName">
+
+					<span class="name" >{% verbatim %}{{ info.name }}{% endverbatim %}</span>
+					<input type="text" v-model="info.value">
+					<span class="unit">{% verbatim %}{{ info.unit }}{% endverbatim %}</span>
+				</div>
+			</div>
+
+			<div id="HeuInfo">
+				启发式评估
+				<button @click="newTable()">新建表格</button>
+				<div id="tables">
+
+					<table class="useTable" v-for="ut in UseTables">
+						<tr>
+							<th>可用性问题编号</th>
+							<td>{% verbatim %}{{ ut.id }}{% endverbatim %}</td>
+						</tr>
+                        <tr>
+                            <th>违反的可用性原则</th>
+                            <td>{% verbatim %}{{ HeuRegular }}{% endverbatim %}</td>
+                        </tr>
+						<tr>
+							<th>界面位置和功能</th>
+							<td><input type="text" name="position" v-model="ut.local"></td>
+						</tr>
+						<tr>
+							<th>可用性问题</th>
+							<td><input type="text" name="useProblem" v-model="ut.problem"></td>
+						</tr>
+						<tr>
+							<th>严重程度</th>
+							<td><input type="number" name="serious" v-model="ut.serious" min="1" max="5"></td>
+						</tr>
+						<tr>
+							<th>改进建议</th>
+							<td><input type="text" name="serious" v-model="ut.advice" width="400px"></td>
+						</tr>
+					</table>
+
+				</div>
+
+			</div>
+
+			<div id="QNaire">
+
+				<div class="preview"  id="previewDiv">
+					<!--<div id="htmlButtons">
+						<button id="cancel">取消</button>
+						<button id="submit">提交</button>
+					</div>
+					-->
+					<div  class="previewQuestion" v-for="que in questions" >
+
+						<div v-if="que.type=='SingleChoose'">
+							<div class="previewTitle">
+								{% verbatim %}{{ que.id }}{% endverbatim %}. <span>[单选题]</span> {% verbatim %}{{ que.title }}{% endverbatim %}
+							</div>
+
+							<input v-if="que.ChooseA!=''" name="choose" type="radio" value="A" v-model="que.answer"/>{% verbatim %}{{ que.ChooseA }}{% endverbatim %} <br>
+
+							<input v-if="que.ChooseB!=''" name="choose" type="radio" value="B" v-model="que.answer" />{% verbatim %}{{ que.ChooseB }}{% endverbatim %}<br>
+							<input v-if="que.ChooseC!=''" name="choose" type="radio" value="C" v-model="que.answer" />{% verbatim %}{{ que.ChooseC }}{% endverbatim %}<br>
+							<input v-if="que.ChooseD!=''" name="choose" type="radio" value="D" v-model="que.answer"/>{% verbatim %}{{ que.ChooseD }}{% endverbatim %}<br>
+						</div>
+
+						<div v-else-if="que.type=='MultiChoose'">
+							<div class="previewTitle">
+								{% verbatim %}{{ que.id }}{% endverbatim %}. <span>[多选题]</span> {% verbatim %}{{ que.title }}{% endverbatim %}
+							</div>
+							<input v-if="que.ChooseA!=''" name="choose" type="checkbox" value="A" v-model="que.answer"/>{% verbatim %}{{ que.ChooseA }}{% endverbatim %}<br>
+							<input v-if="que.ChooseB!=''" name="choose" type="checkbox" value="B" v-model="que.answer"/>{% verbatim %}{{ que.ChooseB }}{% endverbatim %}<br>
+							<input v-if="que.ChooseC!=''" name="choose" type="checkbox" value="C" v-model="que.answer"/>{% verbatim %}{{ que.ChooseC }}{% endverbatim %}<br>
+							<input v-if="que.ChooseD!=''" name="choose" type="checkbox" value="D" v-model="que.answer"/>{% verbatim %}{{ que.ChooseD }}{% endverbatim %}<br>
+						</div>
+
+						<div v-else-if="que.type=='FillInBlank'">
+							<div class="previewTitle">
+								{% verbatim %}{{ que.id }}{% endverbatim %}.  {% verbatim %}{{ que.title }}{% endverbatim %}
+							</div>
+							<input type="text" name="blank" style="width: 300px;height: 25px;" v-model="que.answer" placeholder="请回答问题">
+						</div>
+
+						<div v-else-if="que.type=='Scale'">
+							<div class="previewTitle">
+								{% verbatim %}{{ que.id }}{% endverbatim %}.  {% verbatim %}{{ que.title }}{% endverbatim %}
+							</div>
+							<div class="scaleContent">
+								<span> {% verbatim %}{{ que.lowest }}{% endverbatim %}</span>
+								<div  class="step" v-for="n in que.ScaleCount">
+									<input name="scale" type="radio" :value="n" v-model="que.answer" />{% verbatim %}{{ n }}{% endverbatim %}
+								</div>
+								<span> {% verbatim %}{{ que.highest }}{% endverbatim %}</span>
+							</div>
+
+						</div>
+						<div v-else>
+							<div class="Paragraph">
+								{% verbatim %}{{ que.title }}{% endverbatim %}
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			<div id="modelQNaire">
+				主观量表
+			</div>
+
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="/static/js/vue.js"></script>
+<script type="text/javascript" src="/static/js/axios.min.js"></script>
+
+<script type="text/javascript" src="/static/js/evaPlan.js"></script>
+ {% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}
+
+</html>
